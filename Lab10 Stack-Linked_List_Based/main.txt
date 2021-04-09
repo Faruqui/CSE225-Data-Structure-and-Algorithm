@@ -1,0 +1,48 @@
+#include <iostream>
+#include "stacktype.h"
+
+using namespace std;
+
+int main()
+{
+    StackType<char> s;
+
+    if(s.IsEmpty()) cout << "\nStack is empty.";
+    else cout << "\nStack is not empty.";
+
+    s.Push('A');
+    s.Push('B');
+    s.Push('C');
+    s.Push('D');
+
+    if(s.IsEmpty()) cout << "\nStack is empty.";
+    else cout << "\nStack is not empty.";
+
+    if(s.IsFull()) cout << "\nStack is full.";
+    else cout << "\nStack is not full.\n";
+
+    s.printStack();
+    s.Push('X');
+    s.printStack();
+
+    if(s.IsFull()) cout << "\nStack is full.";
+    else cout << "\nStack is not full.\n";
+
+    s.Pop();
+    s.Pop();
+
+    cout << "\nTop item is: "<< s.Top()<<endl;
+
+    StackType<int> n;
+
+    n.Push(21);
+    n.Push(26);
+    n.Push(13);
+    n.Push(26);
+    n.Push(29);
+
+
+    n.printStack();
+    n.ReplaceItem(26, 9);
+    n.printStack();
+}

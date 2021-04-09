@@ -1,0 +1,76 @@
+#include <iostream>
+#include "bst.h"
+#include "quetype.h"
+
+using namespace std;
+
+int main()
+{
+    BinarySearchTree t, s;
+    QueType<int> q;
+
+    t.insert(25);
+    t.insert(13);
+    t.insert(33);
+    t.insert(7);
+    t.insert(19);
+    t.insert(31);
+    t.insert(37);
+    t.insert(18);
+    t.insert(36);
+
+    cout <<"\nInorder: ";
+    t.print_inorder();
+    cout <<"\nPreorder: ";
+    t.print_preorder();
+    cout <<"\nPostorder: ";
+    t.print_postorder();
+
+    cout <<"\nNumber of nodes: "<< t.countNode();
+
+    if(t.searchItem(31)) cout <<"\nFound";
+    else cout << "\nNot Found";
+
+    if(t.searchItem(99)) cout <<"\nFound";
+    else cout << "\nNot Found";
+
+    t.remove(33);
+    if(t.searchItem(33)) cout <<"\nFound";
+    else cout << "\nNot Found";
+
+
+    int arr[9];
+    arr[0] = 103;
+    arr[1] = -15;
+    arr[2] = -25;
+    arr[3] = 104;
+    arr[4] = 25;
+    arr[5] = 13;
+    arr[6] = 113;
+    arr[7] = 155;
+    arr[8] = 696;
+
+/*    s.insert(103);
+    s.insert(-15);
+    s.insert(-25);
+    s.insert(104);
+    s.insert(25);
+    s.insert(13);
+    s.insert(113);
+    s.insert(155);
+    s.insert(696);*/
+
+    for(int i = 0; i<9; i++)
+    {
+        s.insert(arr[i]);
+    }
+    s.getInOrder(q);
+
+    cout <<"\n\n";
+    for(int i =0; i < 9; i++)
+    {
+        arr[i] = q.Dequeue();
+        cout << arr[i];
+        cout<< " ";
+    }
+}

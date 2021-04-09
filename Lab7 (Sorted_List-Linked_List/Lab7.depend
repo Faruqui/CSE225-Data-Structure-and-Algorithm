@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1531294987 source:e:\lab7\main.cpp
+	<iostream>
+	"LinkedList.h"
+	"ListNode.h"
+
+1531294820 source:e:\lab7\src\linkedlist.cpp
+	"linkedlist.h"
+
+1531294838 e:\lab7\include\linkedlist.h
+	"listnode.h"
+
+1531294278 e:\lab7\include\listnode.h
+	<iostream>
+	<string>
+
+1531294298 source:e:\lab7\src\listnode.cpp
+	"listnode.h"
+

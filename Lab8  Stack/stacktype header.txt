@@ -1,0 +1,27 @@
+#ifndef STACKTYPE_H_INCLUDED
+#define STACKTYPE_H_INCLUDED
+#include "itemtype.h"
+class FullStack
+{
+// Just a dummy class to be thrown as an exception object
+};
+class EmptyStack
+{
+// Just another dummy class to be thrown as an exception object
+};
+class StackType
+{
+public:
+    StackType();
+    bool IsFull();
+    bool IsEmpty();
+    void Push(ItemType);
+    void Pop();
+    ItemType Top();
+    void print();
+    void reverseList();
+private:
+    int top;
+    ItemType items[MAX_ITEMS];
+};
+#endif // STACKTYPE_H_INCLUDED

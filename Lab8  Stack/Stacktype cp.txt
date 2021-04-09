@@ -1,0 +1,76 @@
+#include "stacktype.h"
+StackType::StackType()
+{
+    top = -1;
+}
+bool StackType::IsEmpty()
+{
+    return (top == -1);
+}
+bool StackType::IsFull()
+{
+    return (top == MAX_ITEMS);
+}
+void StackType::Push(ItemType item)
+{
+    if(IsFull())
+    {
+        throw FullStack();
+    }
+    top++;
+    items[top] = item;
+}
+void StackType::Pop()
+{
+    if(IsEmpty())
+    {
+        throw EmptyStack();
+    }
+    top--;
+}
+ItemType StackType::Top()
+{
+    return items[top];
+}
+
+void StackType::print()
+{
+    StackType tmp;
+    while(!IsEmpty())
+    {
+        ItemType x = Top();
+        x.Print();
+        Pop();
+        tmp.Push(x);
+    }
+    while(!tmp.IsEmpty())
+    {
+        ItemType x = tmp.Top();
+        tmp.Pop();
+        Push(x);
+    }
+}
+
+void StackType::reverseList()
+{
+    StackType tmp,tmp2;
+    while(!IsEmpty())
+    {
+        ItemType x = Top();
+        Pop();
+        tmp.Push(x);
+    }
+    while(!tmp.IsEmpty())
+    {
+        ItemType x = tmp.Top();
+        tmp.Pop();
+        tmp2.Push(x);
+    }
+    while(!tmp2.IsEmpty())
+    {
+        ItemType x = tmp2.Top();
+        tmp2.Pop();
+        Push(x);
+    }
+
+}

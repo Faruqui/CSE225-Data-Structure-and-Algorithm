@@ -1,0 +1,104 @@
+#include "LinkedList.h"
+
+#include <iostream>
+
+using namespace std;
+
+
+LinkedList::LinkedList()
+{
+    head = nullptr;
+    length = 0;
+}
+
+
+void LinkedList::insertAtEnd(int x)
+{
+    ListNode *newNode, *nodePtr;
+
+    newNode = new ListNode;
+    newNode ->number = x;
+    newNode ->next = nullptr;
+
+
+    if(head == nullptr)
+    {
+        head = newNode;
+    }
+    else
+    {
+        nodePtr = head;
+        while(nodePtr ->next != nullptr)
+        {
+            nodePtr = nodePtr ->next;
+        }
+        nodePtr->next = newNode;
+    }
+    length++;
+}
+
+void LinkedList::insertAtFront(int x)
+{
+    ListNode *newNode;
+    newNode = new ListNode;
+    newNode ->number = x;
+    newNode ->next = head;
+    head = newNode;
+}
+
+void LinkedList::insertAtMid(int x, int y)
+{
+    ListNode *newNode, *nodePtr;
+    newNode = new ListNode;
+    newNode ->number = x;
+    newNode ->next = nullptr;
+
+    if(head == nullptr)
+    {
+        head = newNode;
+    }
+    else
+    {
+        nodePtr = head;
+        while(nodePtr ->number != y && nodePtr ->next !=nullptr)
+        {
+            nodePtr = nodePtr ->next;
+        }
+        if(nodePtr->next == nullptr)
+        {
+            nodePtr ->next = newNode;
+        }
+        else
+        {
+            newNode ->next = nodePtr ->next;
+            nodePtr ->next = newNode;
+        }
+    }
+    length++;
+}
+
+void LinkedList::isEmpty()
+{
+    if(head == nullptr)
+    {
+        cout << "\nList is empty";
+    }
+    else
+    {
+        cout << "\nList is not empty";
+    }
+}
+
+void LinkedList::printList()
+{
+    ListNode *nodePtr;
+
+    nodePtr = head;
+    cout << "\nThe list elements are: ";
+    while(nodePtr ->next != nullptr)
+    {
+        cout <<nodePtr ->number<< ", ";
+        nodePtr = nodePtr->next;
+    }
+    cout << nodePtr ->number << endl;
+}

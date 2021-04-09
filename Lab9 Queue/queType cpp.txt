@@ -1,0 +1,101 @@
+#include "QueType.h"
+
+template<class DataType>
+QueType<DataType>::QueType(int max)
+{
+    maxQue=max;
+    front= -1;
+    rear= -1;
+    info = new DataType[maxQue];
+}
+template<class DataType>
+QueType<DataType>::~QueType()
+{
+    delete[] info;
+}
+template<class DataType>
+void QueType<DataType>::MakeEmpty()
+{
+    front= -1;
+    rear= -1;
+}
+template<class DataType>
+bool QueType<DataType>::IsEmpty()
+{
+    return (front == -1);
+}
+template<class DataType>
+bool QueType<DataType>::IsFull()
+{
+    return ((rear+1)%maxQue==front);
+}
+template<class DataType>
+void QueType<DataType>::Enqueue(DataType i)
+{
+    if(IsFull())
+    {
+        throw FullQueue();
+    }
+    else
+    {
+        rear = (rear+1)%maxQue;
+        info[rear] = i;
+        if (front == -1)
+        {
+            front=0;
+        }
+    }
+}
+template<class DataType>
+void QueType<DataType>::Dequeue()
+{
+    if (front == -1)
+    {
+        cout<< "Queue is Empty"<<endl;
+    }
+    if (front == rear)
+    {
+        MakeEmpty();
+    }
+    else
+    {
+        front = (front+1)%maxQue;
+    }
+}
+template<class DataType>
+DataType QueType<DataType>::Peak()
+{
+    return info[front];
+}
+template<class DataType>
+void QueType<DataType>::print()
+{
+    QueType <DataType> tmp(getLength());
+    cout << "\nList elements are: ";
+    while(!IsEmpty())
+    {
+        cout << Peak();
+        cout << " ";
+        tmp.Enqueue(Peak());
+        Dequeue();
+    }
+    while(!tmp.IsEmpty())
+    {
+        Enqueue(tmp.Peak());
+        tmp.Dequeue();
+    }
+}
+template<class DataType>
+int QueType<DataType>::getLength()
+{
+    return rear-front+1;
+}
+
+
+
+template class QueType<int>; // so CodeBlocks can compile the
+// template for int type data
+template class QueType<double>;// so CodeBlocks can compile the
+// template for double type data
+template class QueType<char>;// so CodeBlocks can compile the
+// template for char type data

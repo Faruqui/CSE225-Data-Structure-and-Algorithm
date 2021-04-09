@@ -1,0 +1,36 @@
+#ifndef QUETYPE_H_INCLUDED
+#define QUETYPE_H_INCLUDED
+#include <iostream>
+using namespace std;
+class FullQueue  // A Dummy Class to be thrown as Exception
+{
+};
+class EmptyQueue // A Dummy Class to be thrown as Exception
+{
+};
+template<class DataType>
+class QueType
+{
+public:
+    QueType(int);
+    ~QueType();
+    void MakeEmpty();
+    bool IsEmpty();
+    bool IsFull();
+    void Enqueue(DataType);
+    void Dequeue();
+    DataType Peak();
+    void print();
+    int getLength();
+private:
+    int front; // pointing to front item in the
+//queue
+    int rear; // pointing to rear item in the
+//queue
+    DataType* info; // items will point to
+// the array where queue
+// items will be stored
+    int maxQue; // will define maximum size
+//of the array
+};
+#endif // QUETYPE_H_INCLUDED

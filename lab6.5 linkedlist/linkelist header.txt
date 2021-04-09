@@ -1,0 +1,26 @@
+#ifndef LINKEDLIST_H_INCLUDED
+#define LINKEDLIST_H_INCLUDED
+#include "ListNode.h"
+
+#include <iostream>
+
+using namespace std;
+
+class LinkedList
+{
+    public:
+        LinkedList();
+        void isEmpty();
+        void insertAtEnd(int);
+        void insertAtFront(int);
+        void insertAtMid(int, int);
+        void printList();
+
+    protected:
+
+    private:
+        ListNode *head;
+        int length;
+};
+
+#endif // LINKEDLIST_H_INCLUDED

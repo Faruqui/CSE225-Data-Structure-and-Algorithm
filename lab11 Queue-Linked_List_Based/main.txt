@@ -1,0 +1,71 @@
+#include <iostream>
+#include "quetype.h"
+
+using namespace std;
+
+int main()
+{
+    QueType <int> q;
+
+    if(q.IsEmpty()) cout << "\nQueue is empty.";
+    else cout << "\nQueue is not empty";
+
+    q.Enqueue(25);
+    q.Enqueue(7);
+    q.Enqueue(-11);
+    q.Enqueue(13);
+
+    if(q.IsEmpty()) cout << "\nQueue is empty.";
+    else cout << "\nQueue is not empty";
+
+    if(q.IsFull()) cout << "\nQueue is full.";
+    else cout << "\nQueue is not full";
+
+    QueType<int> tmp;
+    cout <<"\n";
+    while(!q.IsEmpty())
+    {
+        int x = q.Dequeue();
+        cout<<x << " ";
+        tmp.Enqueue(x);
+    }
+    while(!tmp.IsEmpty())
+    {
+        q.Enqueue(tmp.Dequeue());
+    }
+
+    q.Enqueue(113);
+
+    cout <<"\n";
+    while(!q.IsEmpty())
+    {
+        int x = q.Dequeue();
+        cout<<x << " ";
+        tmp.Enqueue(x);
+    }
+    while(!tmp.IsEmpty())
+    {
+        q.Enqueue(tmp.Dequeue());
+    }
+
+    if(q.IsFull()) cout << "\nQueue is full.";
+    else cout << "\nQueue is not full";
+
+
+    q.Dequeue();
+    q.Dequeue();
+
+    cout <<"\n";
+    while(!q.IsEmpty())
+    {
+        int x = q.Dequeue();
+        cout<<x << " ";
+        tmp.Enqueue(x);
+    }
+    while(!tmp.IsEmpty())
+    {
+        q.Enqueue(tmp.Dequeue());
+    }
+
+    cout << "\nThe length of queue is: "<<q.LengthIs();
+}

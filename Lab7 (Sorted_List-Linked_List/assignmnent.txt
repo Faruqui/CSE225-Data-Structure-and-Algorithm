@@ -1,0 +1,38 @@
+int LinkedList::getLength()
+{
+    ResetList();
+    nextItem = head;
+    string name,number;
+    int c = 0;
+    while(nextItem!=NULL)
+    {
+        c++;
+        nextItem = nextItem->nextNode;
+    }
+    return c;
+}
+
+void LinkedList::splitListInHalf(LinkedList& list1, LinkedList& list2)
+{
+    int n = getLength();
+    int ln1 = n/2;
+    int ln2 = n - ln1;
+    ResetList();
+    nextItem = head;
+
+    string name,number;
+    for(int i = 0; i< ln1; i++)
+    {
+        name = nextItem->GetName();
+        number = nextItem->GetNumber();
+        list1.InsertNode(name, number);
+        nextItem = nextItem->nextNode;
+    }
+    for(int i = 0; i<ln2; i++)
+    {
+        name = nextItem->GetName();
+        number = nextItem->GetNumber();
+        list2.InsertNode(name, number);
+        nextItem = nextItem->nextNode;
+    }
+}

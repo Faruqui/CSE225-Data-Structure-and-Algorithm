@@ -1,0 +1,55 @@
+#include <iostream>
+#include "itemtype.h"
+#include "stacktype.h"
+
+using namespace std;
+
+int main()
+{
+    StackType l, l2;
+
+    if(l.IsEmpty())
+    {
+        cout << "\nStack is empty.\n";
+    }
+    else cout << "\nStack is not empty.\n";
+
+    for(int i = 0; i< 4; i++)
+    {
+        if(!l.IsFull())
+        {
+            ItemType tmp;
+            int x;
+            cout <<"\nEnter number: ";
+            cin >> x;
+            tmp.Initialize(x);
+            l.Push(tmp);
+        }
+    }
+
+    l.print();
+    cout <<"\n\n";
+
+    l.Pop();
+    l.Pop();
+    ItemType tmp;
+    tmp.Initialize(119);
+    l.Push(tmp);
+
+    l.print();
+
+
+	QueType l;
+    cout <<"\nEnter integer: "; 
+    int x;
+    cin >> x;
+
+    while(x !=0)
+    {
+        int rem = x%2;
+        l.enqueue(rem);
+        x = x/2;
+    }
+    l.print();
+
+}

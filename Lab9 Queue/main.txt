@@ -1,0 +1,37 @@
+#include <iostream>
+#include "QueType.h"
+
+using namespace std;
+
+int main()
+{
+    QueType <int> q(6);
+
+    if(q.IsEmpty())
+    {
+        cout << "\nQueue is empty";
+    }
+    else cout << "\nQueue is not empty";
+
+    q.Enqueue(7);
+    q.Enqueue(12);
+    q.Enqueue(4);
+    q.Enqueue(11);
+
+    if(q.IsEmpty())
+    {
+        cout << "\nQueue is empty";
+    }
+    else cout << "\nQueue is not empty";
+    q.print();
+
+    q.Enqueue(-25);
+    q.Enqueue(-113);
+    q.print();
+
+    q.Dequeue();
+    q.Dequeue();
+    q.print();
+
+    cout <<"\nCurrent length of the queue is: "<<q.getLength();
+}

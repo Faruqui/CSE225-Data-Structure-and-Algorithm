@@ -1,0 +1,125 @@
+#include "stacktype.h"
+
+template <class DataType>
+StackType<DataType>::StackType()
+{
+    topPtr = NULL;
+}
+template <class DataType>
+bool StackType<DataType>::IsEmpty()
+{
+    return (topPtr == NULL);
+}
+template <class DataType>
+DataType StackType<DataType>::Top()
+{
+    if (IsEmpty())
+        throw EmptyStack();
+    else
+        return topPtr->info;
+}
+template <class DataType>
+bool StackType<DataType>::IsFull()
+{
+    NodeType* location;
+    try
+    {
+        location = new NodeType;
+        delete location;
+        return false;
+    }
+    catch(bad_alloc& exception)
+    {
+        return true;
+    }
+}
+template <class DataType>
+void StackType<DataType>::Push(DataType newItem)
+{
+    if (IsFull())
+        throw FullStack();
+    else
+    {
+        NodeType* location;
+        location = new NodeType;
+        location->info = newItem;
+        location->next = topPtr;
+        topPtr = location;
+    }
+}
+template <class DataType>
+void StackType<DataType>::Pop()
+{
+    if (IsEmpty())
+        throw EmptyStack();
+    else
+    {
+        NodeType* tempPtr;
+        tempPtr = topPtr;
+        topPtr = topPtr->next;
+        delete tempPtr;
+    }
+}
+template <class DataType>
+void StackType<DataType>::printStack()
+{
+    StackType<DataType> tmp;
+
+    while(!IsEmpty())
+    {
+        tmp.Push(Top());
+        cout << Top() << " ";
+        Pop();
+    }
+    while(!tmp.IsEmpty())
+    {
+        Push(tmp.Top());
+        tmp.Pop();
+    }
+    cout <<"\n";
+}
+template <class DataType>
+void StackType<DataType>::ReplaceItem(DataType oldI, DataType newI)
+{
+    StackType<DataType> tmp;
+
+    while(!IsEmpty())
+    {
+        if(Top() == oldI)
+        {
+            tmp.Push(newI);
+            Pop();
+        }
+        else
+        {
+            tmp.Push(Top());
+            Pop();
+        }
+    }
+    while(!tmp.IsEmpty())
+    {
+        Push(tmp.Top());
+        tmp.Pop();
+    }
+}
+
+
+
+
+template <class DataType>
+StackType<DataType>::~StackType()
+{
+    NodeType* tempPtr;
+    while (topPtr != NULL)
+    {
+        tempPtr = topPtr;
+        topPtr = topPtr->next;
+        delete tempPtr;
+    }
+}
+template class StackType<int>; // so CodeBlocks can compile the
+// template for int type data
+template class StackType<double>;// so CodeBlocks can compile the
+// template for double type data
+template class StackType<char>;// so CodeBlocks can compile the
+// template for char type data

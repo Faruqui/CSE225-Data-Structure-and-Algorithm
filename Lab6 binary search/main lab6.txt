@@ -1,0 +1,75 @@
+#include <iostream>
+#include "sortedtype.h"
+#include "itemtype.h"
+
+using namespace std;
+
+int main()
+{
+    SortedType people;
+
+    cout << "\nEnter number of people: ";
+    int n;
+    cin >> n;
+    getchar();
+
+    for(int i = 0; i < n; i ++)
+    {
+        ItemType a;
+        string name;
+        int value;
+
+        cout << "\nEnter name: ";
+        getline(cin, name);
+        cout << "\nEnter value: ";
+        cin >> value;
+        getchar();
+
+        a.Initialize(value, name);
+        people.InsertItem(a);
+    }
+
+    /*for(int i = 0; i<2;i++)
+    {
+        cout <<"\nEnter value to search: ";
+        int value;
+        cin >> value;
+
+        ItemType a;
+        a.Initialize(value, "sad");
+        bool found = false;
+        found = people.SearchItem(a);
+
+
+        if(found)
+        {
+            cout <<"Object found";
+        }
+        if(found == false)
+        {
+            cout <<"Object not found";
+        }
+    }*/
+    ItemType t1, t2;
+    t1.Initialize(92, "T1");
+    t2.Initialize(20, "T2");
+    bool found = false;
+    found = people.SearchItem(t1);
+
+    if(found)
+    {
+        cout <<"\nObject found";
+    }else
+    {
+        cout <<"\nObject not found";
+    }
+
+    found = people.SearchItem(t2);
+    if(found)
+    {
+        cout <<"\nObject found";
+    }else
+    {
+        cout <<"\nObject not found";
+    }
+}

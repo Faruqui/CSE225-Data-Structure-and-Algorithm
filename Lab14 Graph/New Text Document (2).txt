@@ -1,0 +1,34 @@
+template<class VertexType>
+int GraphType<VertexType>::OutDegree(VertexType v)
+{
+    QueType<VertexType> vertexQ;
+    int degree = 0;
+    ClearMarks();
+    VertexType item;
+    GetToVertices(v,vertexQ);
+
+    while (!vertexQ.IsEmpty())
+    {
+        vertexQ.Dequeue(item);
+        if(item != v) degree++;
+    }
+    return degree;
+
+}
+template<class VertexType>
+bool GraphType<VertexType>::FoundEdge(VertexType u, VertexType v)
+{
+    QueType<VertexType> vertexQ;
+    bool found = false;
+    ClearMarks();
+    VertexType item;
+    GetToVertices(u,vertexQ);
+
+    while (!vertexQ.IsEmpty())
+    {
+        vertexQ.Dequeue(item);
+        if(item == v) found = true;
+    }
+
+    return found;
+}

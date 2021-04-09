@@ -1,0 +1,15 @@
+#ifndef LISTNODE_H_INCLUDED
+#define LISTNODE_H_INCLUDED
+
+
+class ListNode
+{
+    public:
+        int number;
+        ListNode *next;
+    protected:
+
+    private:
+};
+
+#endif // LISTNODE_H_INCLUDED

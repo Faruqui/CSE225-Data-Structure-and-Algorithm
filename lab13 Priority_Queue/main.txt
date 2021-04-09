@@ -1,0 +1,45 @@
+#include <iostream>
+#include "pqtype.h"
+
+using namespace std;
+
+int main()
+{
+    PQType<int> p(20);
+
+    if(p.IsEmpty()) cout << "\nQueue is empty";
+    else cout << "\nQueue is not empty";
+
+    p.Enqueue(4);
+    p.Enqueue(9);
+    p.Enqueue(2);
+    p.Enqueue(7);
+    p.Enqueue(3);
+    p.Enqueue(11);
+    p.Enqueue(17);
+    p.Enqueue(0);
+    p.Enqueue(5);
+    p.Enqueue(1);
+
+    if(p.IsEmpty()) cout << "\nQueue is empty";
+    else cout << "\nQueue is not empty";
+
+    cout <<"\nThe elements are: ";
+    p.PrintQueue();
+
+    int x;
+    p.Dequeue(x);
+    cout <<"\nDequeued element is: " <<x;
+    p.Dequeue(x);
+    cout <<"\nDequeued element is: " <<x;
+
+    cout <<"\nThe elements are: ";
+    p.PrintQueue();
+
+    p.Dequeue(x);
+    p.Dequeue(x);
+    p.Dequeue(x);
+
+    cout <<"\nThe elements are: ";
+    p.PrintQueue();
+}
