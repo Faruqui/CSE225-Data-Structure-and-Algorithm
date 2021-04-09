@@ -1,0 +1,114 @@
+#include <iostream>
+#include "DigitalSearchTree.h"
+
+using namespace std;
+
+int main()
+{
+    DigitalSearchTree<int> ds;
+    DigitalSearchTree<char> s;
+
+    ds.insert(25);
+    ds.insert(2);
+    ds.insert(5);
+    ds.insert(3);
+
+    cout << "\nInorder: ";
+    ds.print_inorder();
+    cout <<"\nPreorder: ";
+    ds.print_preorder();
+    cout <<"\nPostorder: ";
+    ds.print_postorder();
+
+    int x = ds.countNode();
+    cout<< "\nNo. of nodes: "<< x;
+
+
+
+    s.insert('a');
+    s.insert('z');
+    s.insert('S');
+    s.insert('d');
+    s.insert('A');
+    s.insert('G');
+    s.insert('E');
+    s.insert('g');
+    s.insert('e');
+
+    cout << "\nInorder: ";
+    s.print_inorder();
+    cout <<"\nPreorder: ";
+    s.print_preorder();
+    cout <<"\nPostorder: ";
+    s.print_postorder();
+
+    x = s.countNode();
+    cout<< "\nNo. of nodes: "<< x;
+
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+
+
+
+    if(s.search('A'))
+    {
+        cout<<"found";
+    }
+    else
+        cout<<"not found"<<endl;
+
+    if(s.search('a'))
+    {
+        cout<<"found";
+    }
+    else
+        cout<<"not found"<<endl;
+
+
+    if(s.search('E'))
+    {
+        cout<<"found";
+    }
+    else
+        cout<<"not found"<<endl;
+
+    if(s.search('G'))
+    {
+        cout<<"found";
+    }
+    else
+        cout<<"not found"<<endl;
+
+    if(s.search('e'))
+    {
+        cout<<"found";
+    }
+    else
+        cout<<"not found"<<endl;
+
+
+    if(s.search('F'))
+    {
+        cout<<"found"<<endl;
+    }
+    else
+        cout<<"not found"<<endl;
+
+
+    cout<<endl;
+    cout<<"removing g "<<endl;
+    s.remove('g');
+    s.print_inorder();
+    cout<<endl;
+    cout<<endl;
+
+    cout<<"removing e, A, z "<<endl;
+    s.remove('e');
+    s.remove('A');
+    s.remove('z');
+    cout << "\nInorder: ";
+    s.print_inorder();
+
+}

@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1536257210 source:c:\users\faruqui\documents\c++\project\main.cpp
+	<iostream>
+	"DigitalSearchTree.h"
+
+1535813303 source:c:\users\faruqui\documents\c++\project\src\quetype.cpp
+	"quetype.h"
+
+1535813306 c:\users\faruqui\documents\c++\project\include\quetype.h
+	<iostream>
+
+1535912264 c:\users\faruqui\documents\c++\project\include\digitalsearchtree.h
+	<bitset>
+	"quetype.h"
+
+1536251459 source:c:\users\faruqui\documents\c++\project\src\digitalsearchtree.cpp
+	"DigitalSearchTree.h"
+
+1536251459 source:d:\academic stuffs\semester 4 (182)\cse 225l\project\project\src\digitalsearchtree.cpp
+	"DigitalSearchTree.h"
+
+1535912264 d:\academic stuffs\semester 4 (182)\cse 225l\project\project\include\digitalsearchtree.h
+	<bitset>
+	"quetype.h"
+
+1535813306 d:\academic stuffs\semester 4 (182)\cse 225l\project\project\include\quetype.h
+	<iostream>
+
+1535813303 source:d:\academic stuffs\semester 4 (182)\cse 225l\project\project\src\quetype.cpp
+	"quetype.h"
+

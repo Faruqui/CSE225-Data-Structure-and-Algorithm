@@ -1,0 +1,25 @@
+unsortedtype.h
+#ifndef UNSORTEDTYPE_H_INCLUDED
+#define UNSORTEDTYPE_H_INCLUDED
+#include <iostream>
+using namespace std;
+const int MAX_ITEMS = 5;
+class UnsortedType
+{
+public :
+UnsortedType();
+void InsertItem(int);
+bool SearchItem(int);
+void DeleteItem(int);
+void GetNextItem(int&);
+int LengthIs();
+bool IsFull();
+bool IsEmpty();
+void ResetList();
+void MakeEmpty();
+private:
+int length;
+int info[MAX_ITEMS];
+int currentPos;
+};
+#endif // UNSORTEDTYPE_H_INCLUDED

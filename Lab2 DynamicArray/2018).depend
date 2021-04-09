@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1528313564 source:d:\cse225 lab\2018)\lab2(6\6\main.cpp
+	<iostream>
+	"DateType.h"
+	"DynamicArray.h"
+
+1528313741 d:\cse225 lab\2018)\lab2(6\6\include\datetype.h
+
+1528314035 d:\cse225 lab\2018)\lab2(6\6\include\dynamicarray.h
+	"DateType.h"
+
+1528314063 source:d:\cse225 lab\2018)\lab2(6\6\src\datetype.cpp
+	"DateType.h"
+	<iostream>
+
+1528312922 source:d:\cse225 lab\2018)\lab2(6\6\src\dynamicarray.cpp
+	"DynamicArray.h"
+

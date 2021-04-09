@@ -1,0 +1,141 @@
+#include "DigitalSearchTree.h"
+
+template <class DataType>
+DigitalSearchTree<DataType>::DigitalSearchTree()
+{
+    root = NULL;
+}
+
+template <class DataType>
+DigitalSearchTree<DataType>::~DigitalSearchTree()
+{
+    //dtor
+}
+
+template <class DataType>
+void DigitalSearchTree<DataType>::insert(DataType d)
+{
+    std::string s = std::bitset< 4 >( (int)d ).to_string();
+    int i = 0;
+    cout << "\n"<<d<<" is: "<<s<<"\n";
+    /*
+    while(s[i])
+    {
+        cout<<s[i]<<" ";
+        i++;
+    }
+    i=0;*/
+    char c = s[0];
+
+    tree_node* t = new tree_node;
+    t->data = d;
+    t->left = NULL;
+    t->right = NULL;
+    tree_node* parent;
+    parent = NULL;
+// is this a new tree?
+    if(isEmpty())
+    {
+        root = t;
+    }
+    else // inserting into a non-empty tree
+    {
+//Note: ALL insertions are as leaf nodes
+        tree_node* curr;
+        curr = root;
+
+// Find the Node's parent
+        while(curr)
+        {
+            parent = curr;
+            if(c == '0')
+            {
+                curr = curr->left;
+                //cout << d<<" left ";
+            }
+            else
+            {
+                curr = curr->right;
+                //cout << d<<" right ";
+            }
+            i++;
+            c = s[i];
+        } // while ends here
+        i--;
+        c = s[i];
+        if(c == '0')
+        {
+            parent->left = t;
+            //cout << d<<" set left ";
+        }
+        else
+        {
+            parent->right = t;
+            //cout << d<<" set right ";
+        }
+    }
+}
+
+template <class DataType>
+bool DigitalSearchTree<DataType>::isEmpty()
+{
+    if(root == NULL)
+    {
+        return true;
+    }
+    else return false;
+}
+template <class DataType>
+void DigitalSearchTree<DataType>::inorder(tree_node* p)
+{
+    if(p != NULL)
+    {
+        if(p->left) inorder(p->left);
+        cout<<" "<<p->data<<" ";
+        if(p->right) inorder(p->right);
+    }
+    else return;
+}
+template <class DataType>
+void DigitalSearchTree<DataType>::getInOrder(QueType<int>& q)
+{
+    if(!q.IsEmpty()) q.MakeEmpty();
+    fillInOrder(q,root);
+}
+template <class DataType>
+void DigitalSearchTree<DataType>::fillInOrder(QueType<int>& q,tree_node* p)
+{
+    if(p!= NULL)
+    {
+        if(p->left) fillInOrder(q,p->left);
+        q.Enqueue(p->data);
+        if(p->right) fillInOrder(q,p->right);
+    }
+    else
+        return;
+}
+template <class DataType>
+void DigitalSearchTree<DataType>::print_inorder()
+{
+    inorder(root);
+}
+template <class DataType>
+void DigitalSearchTree<DataType>::counter(int* c, tree_node* p)
+{
+    if(p != NULL)
+    {
+        if(p->left) counter(c, p->left);
+        if(p->right) counter(c, p->right);
+        *c = *c+1;
+    }
+    else return;
+}
+template <class DataType>
+int DigitalSearchTree<DataType>::countNode()
+{
+    int c=0;
+    counter(&c, root);
+    return c;
+}
+template class DigitalSearchTree<int>;
+template class DigitalSearchTree<char>;
